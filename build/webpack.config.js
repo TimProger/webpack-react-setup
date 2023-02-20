@@ -1,11 +1,11 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const EslintWebpackPlugin = require('eslint-webpack-plugin');
 
 const PATHS = {
-  src: path.join(__dirname, './src'),
-  dist: path.join(__dirname, './dist'),
-  assets: 'assets/'
+  src: path.join(__dirname, '../src'),
+  dist: path.join(__dirname, '../dist'),
 }
 
 const mode = process.env.NODE_ENV || 'development';
@@ -55,24 +55,17 @@ module.exports = {
         exclude: /node_modules/
       },
       {
-        // Fonts
-        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
-        loader: 'file-loader',
-        options: {
-          name: '[name].[ext]'
-        }
+        test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
+        type: 'asset/resource',
       },
       {
-        // images / icons
-        test: /\.(png|jpg|gif|svg)$/,
-        loader: 'file-loader',
-        options: {
-          name: '[name].[ext]'
-        }
+        test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
+        type: 'asset/inline',
       },
       {
         // scss
         test: /\.s[ac]ss$/,
+        exclude: /node_modules/,
         use: [
           'style-loader',
           MiniCssExtractPlugin.loader,
@@ -96,6 +89,7 @@ module.exports = {
       {
         // css
         test: /\.css$/,
+        exclude: /node_modules/,
         use: [
           'style-loader',
           MiniCssExtractPlugin.loader,
@@ -107,7 +101,6 @@ module.exports = {
             loader: 'postcss-loader',
             options: {
               sourceMap: true,
-              config: { path: `./postcss.config.js` }
             }
           }
         ]
@@ -115,8 +108,9 @@ module.exports = {
     ],
   },
   plugins: [
+    new EslintWebpackPlugin(),
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'public', 'index.html'),
+      template: path.resolve(__dirname, '../public', 'index.html'),
     }),
     new MiniCssExtractPlugin({
       filename: '[name].[hash].css',
