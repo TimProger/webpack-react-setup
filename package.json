@@ -4,8 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "webpack serve --config build/webpack.config.js",
-    "build": "webpack --config build/webpack.config.js",
+    "dev": "webpack serve --config build/webpack.config.js --env env=dev --open",
+    "build": "webpack --config build/webpack.config.js --env env=prod",
     "clear": "rd /s /q dist"
   },
   "devDependencies": {
@@ -13,25 +13,20 @@
     "@babel/preset-env": "^7.20.2",
     "@babel/preset-react": "^7.18.6",
     "@babel/preset-typescript": "^7.18.6",
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.5.10",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
     "@types/webpack-env": "^1.18.0",
-    "@typescript-eslint/eslint-plugin": "^5.0.0",
     "babel-loader": "^9.1.2",
     "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.7.3",
-    "eslint-config-standard-with-typescript": "^34.0.0",
-    "eslint-loader": "^4.0.2",
-    "eslint-plugin-import": "^2.25.2",
-    "eslint-plugin-n": "^15.0.0",
-    "eslint-plugin-promise": "^6.0.0",
-    "eslint-plugin-react": "^7.32.2",
-    "eslint-webpack-plugin": "^4.0.0",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.7.2",
     "postcss-preset-env": "^8.0.1",
+    "react-refresh": "^0.14.0",
+    "react-refresh-webpack-plugin": "^0.1.0",
     "sass": "^1.58.3",
     "sass-loader": "^13.2.0",
     "style-loader": "^3.3.1",
@@ -39,10 +34,10 @@
     "typescript": "*",
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.1",
-    "webpack-dev-server": "^4.11.1"
+    "webpack-dev-server": "^4.11.1",
+    "webpack-merge": "^5.8.0"
   },
   "dependencies": {
-    "eslint": "^8.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   }

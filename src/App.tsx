@@ -1,14 +1,13 @@
-import React, {useEffect} from 'react';
+import React, {useState} from 'react';
 
 const App: React.FC = () => {
 
-  useEffect(()=>{
-    console.log("12")
-  },[])
+  const [count, setCount] = useState(0)
+  console.log(1)
 
   return (
-    <div>
-      Setup
+    <div onClick={()=>setCount(count + 1)}>
+      {count}
     </div>
   );
 };
