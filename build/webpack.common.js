@@ -7,6 +7,8 @@ const PATHS = {
   dist: path.join(__dirname, '../dist'),
 }
 
+const isDev = process.env.NODE_ENV === 'development'
+
 module.exports = {
   entry: PATHS.src,
   output: {
@@ -49,22 +51,14 @@ module.exports = {
         type: 'asset/inline',
       },
       {
-        // scss
+        // SCSS
         test: /\.s[ac]ss$/,
         exclude: /node_modules/,
         use: [
-          'style-loader',
-          MiniCssExtractPlugin.loader,
+          !isDev ? MiniCssExtractPlugin.loader : 'style-loader',
           {
             loader: 'css-loader',
             options: { sourceMap: true }
-          },
-          {
-            loader: 'postcss-loader',
-            options: {
-              sourceMap: true,
-              config: { path: `./postcss.config.js` }
-            }
           },
           {
             loader: 'sass-loader',
@@ -73,21 +67,14 @@ module.exports = {
         ]
       },
       {
-        // css
+        // CSS
         test: /\.css$/,
         exclude: /node_modules/,
         use: [
-          'style-loader',
-          MiniCssExtractPlugin.loader,
+          !isDev ? MiniCssExtractPlugin.loader : 'style-loader',
           {
             loader: 'css-loader',
             options: { sourceMap: true }
-          },
-          {
-            loader: 'postcss-loader',
-            options: {
-              sourceMap: true,
-            }
           }
         ]
       },

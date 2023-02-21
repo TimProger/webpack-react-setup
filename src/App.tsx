@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
+import s from '@/styles/app.module.scss'
 
 const App: React.FC = () => {
 
   const [count, setCount] = useState(0)
-  console.log(1)
 
   return (
-    <div onClick={()=>setCount(count + 1)}>
+    <div className={s.app} onClick={()=>setCount(count + 1)}>
       {count}
     </div>
   );
