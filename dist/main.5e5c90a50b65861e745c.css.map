@@ -1,0 +1,1 @@
+{"version":3,"file":"main.5e5c90a50b65861e745c.css","mappings":"AAEA,sBACE,gBCHW,C","sources":["webpack://Webpack/./src/styles/app.module.scss","webpack://Webpack/./src/styles/_vars.scss"],"sourcesContent":["@import \"./_vars\";\r\n\r\n.app{\r\n  background: $block-main;\r\n}","$block-main: green"],"names":[],"sourceRoot":""}
